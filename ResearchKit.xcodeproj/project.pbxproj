@@ -760,7 +760,7 @@
 		86C40B5C1A8D7C5B00081FAC /* ORKTableContainerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ORKTableContainerView.h; sourceTree = "<group>"; };
 		86C40B5D1A8D7C5B00081FAC /* ORKTableContainerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = ORKTableContainerView.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		86C40B5E1A8D7C5B00081FAC /* ORKTextFieldView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ORKTextFieldView.h; sourceTree = "<group>"; };
-		86C40B5F1A8D7C5B00081FAC /* ORKTextFieldView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = ORKTextFieldView.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		86C40B5F1A8D7C5B00081FAC /* ORKTextFieldView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = ORKTextFieldView.m; sourceTree = "<group>"; };
 		86C40B601A8D7C5B00081FAC /* ORKTintedImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ORKTintedImageView.h; sourceTree = "<group>"; };
 		86C40B611A8D7C5B00081FAC /* ORKTintedImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ORKTintedImageView.m; sourceTree = "<group>"; };
 		86C40B641A8D7C5B00081FAC /* ORKAnswerFormat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ORKAnswerFormat.h; sourceTree = "<group>"; };
@@ -822,7 +822,7 @@
 		86C40BA21A8D7C5C00081FAC /* ORKQuestionStep.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = ORKQuestionStep.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		86C40BA31A8D7C5C00081FAC /* ORKQuestionStep_Internal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ORKQuestionStep_Internal.h; sourceTree = "<group>"; };
 		86C40BA41A8D7C5C00081FAC /* ORKQuestionStepViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ORKQuestionStepViewController.h; sourceTree = "<group>"; };
-		86C40BA51A8D7C5C00081FAC /* ORKQuestionStepViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = ORKQuestionStepViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		86C40BA51A8D7C5C00081FAC /* ORKQuestionStepViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = ORKQuestionStepViewController.m; sourceTree = "<group>"; };
 		86C40BA61A8D7C5C00081FAC /* ORKQuestionStepViewController_Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ORKQuestionStepViewController_Private.h; sourceTree = "<group>"; };
 		86C40BA71A8D7C5C00081FAC /* ORKResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ORKResult.h; sourceTree = "<group>"; };
 		86C40BA81A8D7C5C00081FAC /* ORKResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ORKResult.m; sourceTree = "<group>"; };

@@ -63,14 +63,15 @@
     
     textField.delegate = self;
     textField.allowsSelection = YES;
-    
+
     
     if (questionType == ORKQuestionTypeDecimal) {
         textField.keyboardType = UIKeyboardTypeDecimalPad;
     } else if (questionType == ORKQuestionTypeInteger) {
         textField.keyboardType = UIKeyboardTypeNumberPad;
     }
-    
+    textField.textAlignment = NSTextAlignmentCenter;
+    [self addPlusMinusAccessoryToField:textField];
     [textField addTarget:self action:@selector(valueFieldDidChange:) forControlEvents:UIControlEventEditingChanged];
     
     _containerView = [[UIView alloc] init];
@@ -82,6 +83,51 @@
     self.layoutMargins = ORKStandardLayoutMarginsForTableViewCell(self);
     ORKEnableAutoLayoutForViews(@[_containerView, _textFieldView]);
     [self setUpConstraints];
+}
+
+- (void)addPlusMinusAccessoryToField:(UITextField*) field {
+    UIView *inputAccesoryView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 42)];
+    // It´s good idea a view under the button in order to change the color...more custom option
+    inputAccesoryView.backgroundColor = [UIColor clearColor];
+    UIButton *minusButton = [[UIButton alloc] initWithFrame:CGRectMake(inputAccesoryView.frame.size.width/2, 0, inputAccesoryView.frame.size.width/2, inputAccesoryView.frame.size.height)];
+    [minusButton setImage:[UIImage imageNamed:@"numberPadMinus"] forState:UIControlStateNormal];
+    [minusButton setBackgroundColor:[UIColor colorWithRed:187.0f/255.0f green:194.0f/255.0f blue:187.0f/255.0f alpha:1]];
+    [minusButton addTarget:self action:@selector(addNegativeSign) forControlEvents:UIControlEventTouchUpInside];
+    [inputAccesoryView addSubview:minusButton];
+    
+    UIButton *plusButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, inputAccesoryView.frame.size.width/2, inputAccesoryView.frame.size.height)];
+    [plusButton setImage:[UIImage imageNamed:@"numberPadPlus"] forState:UIControlStateNormal];
+    [plusButton setBackgroundColor:[UIColor colorWithRed:209.0f/255.0f green:213.0f/255.0f blue:219.0f/255.0f alpha:1]];
+    [plusButton addTarget:self action:@selector(removeNegativeSign) forControlEvents:UIControlEventTouchUpInside];
+    [inputAccesoryView addSubview:plusButton];
+    
+    field.inputAccessoryView = inputAccesoryView;
+}
+
+
+- (void)addNegativeSign {
+    ORKUnitTextField *textField =  _textFieldView.textField;
+    
+    if (![textField.text hasPrefix:@"-"])
+    {
+        textField.text = [NSString stringWithFormat:@"-%@",textField.text];
+        if (textField.text.length > 1) {
+            [self valueFieldDidChange:textField];
+        }
+    }
+}
+
+- (void)removeNegativeSign {
+    ORKUnitTextField *textField =  _textFieldView.textField;
+    
+    if ([textField.text hasPrefix:@"-"])
+    {
+        textField.text = [textField.text substringFromIndex:1];
+        textField.text = [NSString stringWithFormat:@" %@",textField.text];
+        if (textField.text.length > 1) {
+            [self valueFieldDidChange:textField];
+        }
+    }
 }
 
 - (void)dealloc {
@@ -101,6 +147,17 @@
 - (void)setUpConstraints {
     NSMutableArray *constraints = [NSMutableArray new];
     NSDictionary *views = NSDictionaryOfVariableBindings(_containerView, _textFieldView);
+    NSLayoutConstraint *widthConstraint = [NSLayoutConstraint constraintWithItem:self
+                                                                       attribute:NSLayoutAttributeWidth
+                                                                       relatedBy:NSLayoutRelationEqual
+                                                                          toItem:nil
+                                                                       attribute:NSLayoutAttributeNotAnAttribute
+                                                                      multiplier:1.0
+                                                                        constant:10000];
+    
+    widthConstraint.priority = UILayoutPriorityDefaultLow + 1;
+    // Get a full width layout
+    [constraints addObject:widthConstraint];
     
     [constraints addObjectsFromArray:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-[_containerView]-|"
                                                                              options:(NSLayoutFormatOptions)0
@@ -121,6 +178,7 @@
                                                                                views:views]];
     [NSLayoutConstraint activateConstraints:constraints];
 }
+
 
 - (BOOL)becomeFirstResponder {
     return [[self textField] becomeFirstResponder];
