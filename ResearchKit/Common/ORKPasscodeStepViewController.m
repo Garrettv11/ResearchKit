@@ -340,7 +340,7 @@
                                                             }]];
                     [strongSelf presentViewController:alert animated:YES completion:nil];
                 } else if (error.code == LAErrorUserCancel) {
-                    [strongSelf makePasscodeViewBecomeFirstResponder];
+                    [strongSelf  performSelector:@selector(makePasscodeViewBecomeFirstResponder) withObject:self afterDelay:1];
                 }
                 
                 [strongSelf finishTouchId];
