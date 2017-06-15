@@ -142,6 +142,10 @@
 "PASSCODE_TEXTFIELD_ACCESSIBILITY_LABEL" = "Passcode entry progress indicator";
 "PASSCODE_TEXTFIELD_ACCESSIBILTIY_VALUE" = "%@ of %@ digits entered";
 "PASSCODE_FORGOT_BUTTON_TITLE" = "Forgot Passcode?";
+"PASSCODE_TOUCH_ID_ERROR_RETRY_LIMIT_MESSAGE" = "Application retry limit exceeded.";
+"PASSCODE_TOUCH_ID_ERROR_LOCKED_OUT_MESSAGE" = "Biometry is locked out.";
+"PASSCODE_TOUCH_ID_ERROR_USER_CANCELLED_MESSAGE" = "Canceled by user.";
+"PASSCODE_TOUCH_ID_ERROR_NOT_ENROLLED_MESSAGE" = "No fingers are enrolled with Touch ID.";
 
 /* Keychain wrapper */
 "KEYCHAIN_ADD_ERROR_MESSAGE" = "Could not add Keychain item.";
