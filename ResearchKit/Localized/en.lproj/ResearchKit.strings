@@ -142,6 +142,7 @@
 "PASSCODE_TOUCH_ID_ERROR_LOCKED_OUT_MESSAGE" = "Biometry is locked out.";
 "PASSCODE_TOUCH_ID_ERROR_USER_CANCELLED_MESSAGE" = "Canceled by user.";
 "PASSCODE_TOUCH_ID_ERROR_NOT_ENROLLED_MESSAGE" = "No fingers are enrolled with Touch ID.";
+"PASSCODE_TOUCH_ID_ERROR_SYSTEM_CANCEL_MESSAGE" = "UI canceled by system.";
 "PASSCODE_TEXTFIELD_INVALID_INPUT_MESSAGE" = "Only numeric characters allowed.";
 "PASSCODE_TEXTFIELD_ACCESSIBILITY_LABEL" = "Passcode entry progress indicator";
 "PASSCODE_TEXTFIELD_ACCESSIBILTIY_VALUE" = "%@ of %@ digits entered";

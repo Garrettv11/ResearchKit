@@ -365,7 +365,10 @@ static CGFloat const kForgotPasscodeHeight              = 100.0f;
                         errorMessage = ORKLocalizedString(@"PASSCODE_TOUCH_ID_ERROR_NOT_ENROLLED_MESSAGE", nil);
                     } else if (error.code == LAErrorAuthenticationFailed) {
                         errorMessage = ORKLocalizedString(@"PASSCODE_TOUCH_ID_ERROR_RETRY_LIMIT_MESSAGE", nil);
+                    } else if (error.code == LAErrorAppCancel) {
+                        errorMessage = ORKLocalizedString(@"PASSCODE_TOUCH_ID_ERROR_SYSTEM_CANCEL_MESSAGE", nil);
                     }
+                    
                     UIAlertController *alert = [UIAlertController alertControllerWithTitle:ORKLocalizedString(@"PASSCODE_TOUCH_ID_ERROR_ALERT_TITLE", nil)
                                                                                    message:errorMessage
                                                                             preferredStyle:UIAlertControllerStyleAlert];
