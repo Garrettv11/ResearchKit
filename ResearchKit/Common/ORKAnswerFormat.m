@@ -1375,6 +1375,18 @@ static NSArray *ork_processTextChoices(NSArray<ORKTextChoice *> *textChoices) {
 
 - (NSString *)sanitizedTextFieldText:(NSString *)text decimalSeparator:(NSString *)separator {
     NSString *sanitizedText = text;
+    //the value will be null if invalid characters are present
+    NSString *decimalSeparator = [[NSLocale currentLocale] objectForKey:NSLocaleDecimalSeparator];
+    NSString *legalCharacters = [@"1234567890" stringByAppendingString:
+                                 (decimalSeparator ? decimalSeparator
+                                  : @"")];
+    NSCharacterSet *illegalCharacters = [[NSCharacterSet characterSetWithCharactersInString:legalCharacters] invertedSet];
+    if ([text rangeOfCharacterFromSet:illegalCharacters].location != NSNotFound)
+    {
+        //if invalid charactesr are found, return empty string
+        return @"";
+    }
+    
     if (_style == ORKNumericAnswerStyleDecimal) {
         sanitizedText = [self removeDecimalSeparatorsFromText:text numAllowed:1 separator:(NSString *)separator];
         if (self.scale) {
