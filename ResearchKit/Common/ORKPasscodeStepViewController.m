@@ -167,6 +167,10 @@ static CGFloat const kForgotPasscodeHeight              = 100.0f;
                                                                                      target:self
                                                                                      action:@selector(cancelButtonAction)];
         }
+//        [[NSNotificationCenter defaultCenter] addObserver:self
+//                                                 selector:@selector(makePasscodeViewBecomeFirstResponder)
+//                                                     name:UIApplicationWillEnterForegroundNotification
+//                                                   object:nil];
     }
 }
 
@@ -182,7 +186,10 @@ static CGFloat const kForgotPasscodeHeight              = 100.0f;
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
+    //if the keyboard was up when covered up, display it again later
+    BOOL wasKeyboardUp = !_shouldResignFirstResponder;
     [self makePasscodeViewResignFirstResponder];
+    _shouldResignFirstResponder = !wasKeyboardUp;
 }
 
 - (void)viewDidLoad {
