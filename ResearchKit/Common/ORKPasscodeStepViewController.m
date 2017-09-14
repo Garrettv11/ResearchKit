@@ -68,6 +68,8 @@ static CGFloat const kForgotPasscodeHeight              = 100.0f;
     LAContext *_touchContext;
     ORKPasscodeType _authenticationPasscodeType;
     BOOL _useTouchId;
+    BOOL _retryTouch;
+
 }
 
 - (ORKPasscodeStep *)passcodeStep {
@@ -165,11 +167,6 @@ static CGFloat const kForgotPasscodeHeight              = 100.0f;
                                                                                      target:self
                                                                                      action:@selector(cancelButtonAction)];
         }
-    
-        [[NSNotificationCenter defaultCenter] addObserver:self
-                                                 selector:@selector(makePasscodeViewBecomeFirstResponder)
-                                                     name:UIApplicationWillEnterForegroundNotification
-                                                   object:nil];
     }
 }
 
@@ -177,6 +174,9 @@ static CGFloat const kForgotPasscodeHeight              = 100.0f;
     [super viewDidAppear:animated];
     if (!_shouldResignFirstResponder) {
         [self makePasscodeViewBecomeFirstResponder];
+    }
+    if (_useTouchId && _retryTouch) {
+        [self promptTouchId];
     }
 }
 
@@ -413,6 +413,8 @@ static CGFloat const kForgotPasscodeHeight              = 100.0f;
             // If it is in editing flow, send a delegate callback.
             [self.passcodeDelegate passcodeViewControllerDidFinishWithSuccess:self];
         }
+    } else {
+        _retryTouch = YES;
     }
 }
 
