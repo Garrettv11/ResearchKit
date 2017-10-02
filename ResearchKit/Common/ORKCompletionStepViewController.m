@@ -154,7 +154,8 @@ static const CGFloat TickViewSize = 122;
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    
+    //do not show the back button on this page
+    [super ork_setBackButtonItem:nil];
     _completionStepView.animationPoint = animated ? 0 : 1;
 }
 
